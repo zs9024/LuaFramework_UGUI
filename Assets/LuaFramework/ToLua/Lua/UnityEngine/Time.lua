@@ -59,7 +59,7 @@ _Time.__index = function(t, k)
 end
 
 _Time.__newindex = function(t, k, v)
-	func = rawget(_set, k)
+	local func = rawget(_set, k)
 
 	if func then
 		return func(v)
@@ -86,7 +86,7 @@ function Time:SetDeltaTime(deltaTime, unscaledDeltaTime)
 		counter = 1000000
 	else
 		_Time.time = _Time.time + deltaTime
-		_Time.realtimeSinceStartup = _Time.realtimeSinceStartup + deltaTime
+		_Time.realtimeSinceStartup = _Time.realtimeSinceStartup + unscaledDeltaTime
 		_Time.timeSinceLevelLoad = _Time.timeSinceLevelLoad + deltaTime	
 		_Time.unscaledTime = _Time.unscaledTime + unscaledDeltaTime 
 	end		
